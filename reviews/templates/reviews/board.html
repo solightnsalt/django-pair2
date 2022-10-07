@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}영화 리뷰 목록{% endblock title %}
+{% block css %}{% endblock css %}
+
+{% block content %}
+  <section class="container">
+    <h1 class="text-center my-3">영화 리뷰 목록</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">리뷰 제목</th>
+          <th scope="col">영화 제목</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for review in reviews %}
+          <tr>
+            <td>Mark</td>
+            <td>Mark</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+{% endblock content %}
