@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load django_bootstrap5 %}
+{% block title %}영화 리뷰{% endblock title %}
+{% block css %}{% endblock css %}
+{% block content %}
+  <h1>
+    <p>{{ review.title }}</p>
+  </h1>
+  <div class="container">
+    <p>{{ review.movie_name }}</p>
+    <p>{{ review.grade }}</p>
+    <p>{{ review.created_at }}</p>
+    <p>{{ review.updated_at }}</p>
+    <p>{{ review.content }}</p>
+  </div>
+  <div>
+    <a role="button" href="{% url 'reviews:update' review.pk %}">수정</a>
+    <a role="button" href="{% url 'reviews:delete' review.pk %}">삭제</a>
+  </div>
+{% endblock %}

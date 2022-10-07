@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load django_bootstrap5 %}
+{% block title %}영화 리뷰 작성{% endblock title %}
+{% block css %}{% endblock css %}
+{% block content %}
+  <h1 class="text-center my-3">
+    리뷰 작성
+  </h1>
+  <div class="container">
+    <form action="" method="POST">
+      {% csrf_token %}
+      {% bootstrap_form review_form %}
+      <button type="submit">등록</button>
+    </form>
+  </div>
+{% endblock %}

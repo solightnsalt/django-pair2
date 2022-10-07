@@ -1,11 +1,10 @@
 {% extends 'base.html' %}
-
 {% block title %}영화 리뷰 목록{% endblock title %}
 {% block css %}{% endblock css %}
-
 {% block content %}
   <section class="container">
     <h1 class="text-center my-3">영화 리뷰 목록</h1>
+    <a role="button" class="btn btn-secondary" href="{% url 'reviews:create' %}">작성</a>
     <table class="table">
       <thead>
         <tr>
@@ -16,8 +15,10 @@
       <tbody>
         {% for review in reviews %}
           <tr>
-            <td>Mark</td>
-            <td>Mark</td>
+            <td>
+              <a href="{% url 'reviews:detail' review.pk %}">{{ review.title }}</a>
+            </td>
+            <td>{{ review.movie_name }}</td>
           </tr>
         {% endfor %}
       </tbody>
