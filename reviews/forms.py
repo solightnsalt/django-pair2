@@ -11,13 +11,12 @@ class ReviewForm(forms.ModelForm):
                     "class" : "form-control"
                 },
             ),
-            # "grade" : forms.NumberInput(
-            #     attrs= {
-            #         "class" : "form-control"
-            #         "min" : "1",
-            #         "max" :"5",
-            #     },
-            # ),
+            "grade" : forms.NumberInput(
+                attrs= {
+                    "class" : "form-control",
+                    "placeholder" : "0 ~ 5",
+                },
+            ),
         }
         
         labels = {

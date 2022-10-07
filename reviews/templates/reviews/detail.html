@@ -1,21 +1,38 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load django_bootstrap5 %}
-{% block title %}영화 리뷰{% endblock title %}
-{% block css %}{% endblock css %}
+{% block title %}MOVIE |
+  {{ review.title }}
+{% endblock title %}
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock css %}
+
 {% block content %}
-  <h1>
-    <p>{{ review.title }}</p>
-  </h1>
-  <div class="container">
-    <p>{{ review.movie_name }}</p>
-    <p>{{ review.grade }}</p>
-    <p>{{ review.created_at }}</p>
-    <p>{{ review.updated_at }}</p>
-    <p>{{ review.content }}</p>
-  </div>
-  <div>
-    <a role="button" href="{% url 'reviews:update' review.pk %}">수정</a>
-    <a role="button" href="{% url 'reviews:delete' review.pk %}">삭제</a>
-  </div>
+  <main>
+    <section class="extrabg">
+      <div class="detail-review container">
+        <!-- 게시글 -->
+        <div class="review p-5">
+          <h1>
+            <p>{{ review.title }}</p>
+          </h1>
+          <h4 class="py-3">{{ review.movie_name }}
+            <span class="grade">| 평점:
+              {{ review.grade }}</span></h4>
+          <p class="time pb-3">작성:
+            {{ review.created_at }}
+            | 수정:
+            {{ review.updated_at }}</p>
+          <h3 class="pb-4">{{ review.content }}</h3>
+        </div>
+        <!-- 수정삭제 버튼 -->
+        <div class="p-5">
+          <a role="button" class="btn btn-outline-secondary" href="{% url 'reviews:update' review.pk %}">수정</a>
+          <a href="{% url 'reviews:delete' review.pk %}" type="button" class="btn btn-danger">삭제</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
 {% endblock %}

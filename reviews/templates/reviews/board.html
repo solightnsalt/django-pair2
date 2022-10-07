@@ -1,27 +1,43 @@
 {% extends 'base.html' %}
+{% load static %}
+
 {% block title %}MOVIE | BOARD{% endblock title %}
-{% block css %}{% endblock css %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock css %}
+
 {% block content %}
-  <section class="container">
-    <h1 class="text-center my-3">영화 리뷰 목록</h1>
-    <a role="button" class="btn btn-secondary" href="{% url 'reviews:create' %}">작성</a>
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">리뷰 제목</th>
-          <th scope="col">영화 제목</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for review in reviews %}
-          <tr>
-            <td>
-              <a href="{% url 'reviews:detail' review.pk %}">{{ review.title }}</a>
-            </td>
-            <td>{{ review.movie_name }}</td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </section>
+  <main>
+    <section class="extrabg">
+      <div class="board container">
+        <h1 class="text-center pb-3">영화 리뷰 목록</h1>
+        <a role="button" class="btn btn-secondary" href="{% url 'reviews:create' %}">작성</a>
+        <div class="review-table">
+          <table class="table container">
+            <thead>
+              <tr>
+                <th scope="col">리뷰 제목</th>
+                <th scope="col">영화 제목</th>
+                <th scope="col">내용 보기</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for review in reviews %}
+                <tr>
+                  <td>
+                    <a class="board-review-title" href="{% url 'reviews:detail' review.pk %}">{{ review.title }}</a>
+                  </td>
+                  <td>{{ review.movie_name }}</td>
+                  <td>
+                    <a role="button" class="btn btn-outline-secondary btn-sm" href="{% url 'reviews:detail' review.pk %}">내용보기</a>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
 {% endblock content %}

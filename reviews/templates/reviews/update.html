@@ -1,19 +1,26 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load django_bootstrap5 %}
-{% block title %}영화 리뷰
+{% block title %}MOVIE |
+  {{ review.title }}
 {% endblock title %}
 {% block css %}{% endblock css %}
 {% block content %}
-  <h1 class="text-center my-3">
-    리뷰 수정
-  </h1>
-  <div class="container">
-    <form action="" method="POST">
-      {% csrf_token %}
-      {% bootstrap_form review_form %}
-      <button type="submit">수정</button>
-      <a role="button" href="{% url 'reviews:detail' num %}">뒤로가기</a>
-    </form>
-  </div>
+  <main>
+    <section class="extrabg">
+      <div class="create container">
+        <h1 class="text-center py-3">
+          리뷰 수정
+        </h1>
+        <div class="container">
+          <form action="" method="POST">
+            {% csrf_token %}
+            {% bootstrap_form review_form %}
+            <button type="submit" class="btn btn-secondary">수정</button>
+            <a role="button" class="btn btn-dark" href="{% url 'reviews:detail' num %}">뒤로가기</a>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
 {% endblock %}
